@@ -1,0 +1,105 @@
+<!doctype html>
+
+<!--
+Use the "Currency converter"  example found under "Examples" on D2L and add  
+Javascript code to convert between US dollars (USD) and British pound sterling (BPS).
+Note: It is best to use copy and paste to create a copy of "Currency converter"  document.
+
+When the “Convert to BPS”  button is clicked, the script should read the input, 
+compute the equivalent British pound sterling (BPS) and display the computed value.
+Formula: BPS = 0.65*USD
+The output should be similar to the following:
+100 USD = 65 BPS
+
+When the “Convert to  USD” is clicked, the script should read the input, compute 
+the equivalent US dollar amount and display the computed value.
+Formula: USD = 1.53*BPS
+The output should be similar to the following:
+100 BPS = 153 USD
+You should validate data. Make sure the user enters a nonnegative number.
+-->
+
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <!-- Set the viewport so this responsive site displays correctly on mobile devices -->
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>Currency converter </title>
+ <!-- Include bootstrap CSS -->
+ <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<!-- Include jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<style>
+#inputCurrency { width: 100px; display: inline-block;}
+#result {color: black;}
+</style>
+</head>
+<body class='container'>
+<div class='row'>
+    <div class='col-md-12'>
+		<h2>Currency Converter</h2>
+		<p>Enter amount: <input type='text' name='currency' id='inputCurrency' class='form-control' />
+			<input type='button' id='d_to_s' value="USD to BPS" class='btn btn-primary' />
+			<input type='button' id='s_to_d' value='BPS to USD' class='btn btn-info'/>
+		</p>
+		<p id='errors'></p>
+		<p id='result'>
+		
+		
+		</p>
+		<p>Thanks for using this application</p>
+		<p>Have a nice day!</p>
+		
+	</div>
+</div>
+
+<!-- Javascript -->
+<script>
+
+document.getElementById('d_to_s').onclick = function() {
+var currency = document.getElementById('inputCurrency').value;
+
+if (isNaN(currency)){
+		alert("Invalid length! Please Try Again");
+		document.getElementById('inputCurrency').focus();
+		}
+else {
+
+	var result = convertU(currency);
+	//Print on html
+	document.getElementById('result').textContent = currency +" USD = " + result + " BPS";
+
+}
+
+function convertU(usd) {
+	var BPS = 0.65;
+	return BPS*usd;
+}
+
+};
+
+document.getElementById('s_to_d').onclick = function() {
+var currency = document.getElementById('inputCurrency').value;
+
+if (isNaN(currency)){
+		alert("Invalid length! Please Try Again");
+		document.getElementById('inputCurrency').focus();
+		}
+else {
+
+	var result = convertB(currency);
+	//Print on html
+	document.getElementById('result').textContent = currency +" BSP = " + result + " USD";
+
+}
+
+function convertB(bps) {
+	var USD = 1.53;
+	return bps*USD;
+}
+
+};
+</script>
+
+</body>
+</html>

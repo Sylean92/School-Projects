@@ -1,0 +1,118 @@
+Various Small PHP Codes -Getting Started with Language
+Each Different File is separated by **" "** Titles
+
+**Array 1**
+
+<?php
+
+//Define an array
+$scores = array(80,79,67,90);
+echo "First element: ".$scores[0]."<br/>\n";
+//Add another element
+$scores[] = 45;
+//add another element
+array_push($scores, 78);
+//Find the size of the array
+$size = count($scores);
+//Display array elements
+for ($i = 0; $i<$size; $i++){
+	echo "Element ".$i. " is ".$scores[$i]. "<br/>\n";
+	$total += $scores[$i];
+}
+
+echo "Total: " .$total. "<br/>\n";
+
+?>
+
+**Associative Array 1**
+
+<?php
+//Define an associative array
+$sales = array('Jan' => 1000, 'Feb' => 2100, 'Mar' => 975, 
+		'Apr' => 1976);
+
+//Display data
+echo "<table border = '0'>";
+echo "<tr><td> Month</td><td>Sales</td></tr>\n";
+foreach ($sales as $key => $value){
+	echo "<tr><td> {$key} </td><td> {$sales[$key]} </td></tr>\n";
+
+}
+?>
+
+**Calculate Area in Form**
+
+<?php
+
+$length = 0;
+$width = 0;
+
+//if variable is set 
+if(isset($_POST['box_length'])) {
+
+	$length = $_POST['box_length'];
+
+}
+
+if(isset($_POST['box_width'])){
+
+	$width = $_POST['box_width'];
+}
+
+//Check for errors
+if(is_numeric($length) && is_numeric($width)){
+
+//Calculate area
+
+//$area = $length*$width;
+$area = getArea($length, $width);
+echo "<p>Area of the rectangle is: " .$area. "</p>\n";
+}
+
+else {
+
+	//display error
+	echo "Invalid input!";
+}
+
+//Define Selection Operation
+$op = "";
+if(isset($_POST['box_length']))
+	$op = $_POST['op'];
+
+echo "Selected Operation: " .$op;
+
+function getArea($len, $wid){
+	return $len * $wid;
+}
+
+//key values for the link of length and width after ?
+if (isset($_GET['length']) && isset($_GET['width']))
+	$area =$_GET['length'] * $_GET['width'];
+	echo "Area: " .$area; 
+?>
+<!-- if the script is above the form then the area will display above it-->
+
+<p><a href = 'calc_area.php?length=10&width=12'>Get Area </a></p>
+
+<form method = 'post' action = 'calc_area.php' >
+
+<!--the value keeps the values inputed inside the text box-->
+<p>Enter Length: <input type = 'text' name = 'box_length' 
+		value = '<?php echo $length; ?>' /></p>
+<p>Enter Width: <input type = 'text' name = 'box_width' 
+		value = '<?php echo $width; ?>' /></p>
+<p> Select Operation: <select name = 'op'>
+		<option value = 'add'>Add </option>
+		<option value = 'product'> Multiply</option>
+</select></p>
+<p><input type = 'submit' value= 'Calculate Area'>
+   <input type = 'reset' value = 'Clear' />
+</p>
+
+
+
+
+
+
+

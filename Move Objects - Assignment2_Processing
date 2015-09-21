@@ -1,0 +1,142 @@
+PFont f;
+
+void setup(){
+  
+background(0,0,0); 
+size(1290,820);
+
+//Creates Font Type
+f = createFont("Arial",16,true); // Arial, 16 point, anti-aliasing on
+
+}
+
+
+
+
+void draw(){
+
+    //removes previous image
+    background(76, 76, 76); 
+
+    //Displays Get Ready Text at Top of Screen
+      textFont(f,36);
+      fill(255,100,10);
+      text("Get Ready To Serve!!",500,100);
+    
+    fill(153, 204, 255);
+    stroke(255, 255, 255);    
+    
+    //tennis table divider
+    fill(255,255,255);
+    rectMode(CENTER);
+    rect(645,600,100,50);
+    rect(645,700,50,250);
+    strokeWeight(5);
+    line(645,500,645,600);
+    
+    //tennis table
+    //(x1,y1,x2,y2)
+    strokeWeight(5);
+    fill(153, 204, 255);
+    line(200,600,600,600);
+    line(400,600,1100,600);
+    
+    //Table Divider Design
+    strokeWeight(5);
+    stroke(153, 204, 255);
+    point(630,600);
+    point(640,600);
+    point(650,600);
+    point(660,600);
+    point(645,610);
+    point(645,620);
+    point (645,630);    
+    triangle(595,580,595,620,620,620);
+    triangle(695,580,695,620,670,620);
+    
+    
+    //Red End table (left side)
+    beginShape(QUADS);
+  
+     fill(150,20,30);
+     strokeWeight(1);
+     vertex(200,600);
+     vertex(300,600);
+     vertex(500,600);
+     vertex(200,950);
+    endShape(CLOSE);
+    
+    //Red End table (right side)
+    beginShape(QUADS);
+
+     vertex(1100,600);
+     vertex(1000,600);
+    // vertex(300,800);
+     vertex(800,600);
+     vertex(1100,950);
+    endShape(CLOSE);
+    
+    //End Table Design
+    fill(255,255,255);
+    strokeWeight(2);
+    stroke(153, 204, 255);
+    //0: starts at 3oclock
+    //Clockwise down to 6oclock
+    //arc(190,550,100,100,0,PI*.05);
+    
+    arc(320,600,100,100,0,PI);
+    arc(980,600,100,100,0,PI);
+    
+    //Bottom of Table
+    strokeWeight(8);
+    stroke(255,255,255);
+    fill(255,255,255);
+    line(200,817,1100,817);
+    
+    //Moving Person 1
+    //(x,y,width,height)
+    stroke(255,255,255);
+    fill(153, 204, 255);
+    ellipseMode(RADIUS);
+    //Handle
+    rect(mouseX,mouseY+100,30,100,2);
+    //Pad
+    ellipse(mouseX,mouseY,50,70);
+   
+    //Person 2
+    ellipseMode(RADIUS);
+    //Handle
+    rect(1100,500,30,100,2);    
+    //Pad
+    ellipse(1100,400,50,70);
+ 
+   //Person 2 non-serving icon
+    beginShape(QUADS);
+  
+     fill(150,20,30);
+     strokeWeight(1);
+     vertex(1090,300);
+     vertex(1080,320);
+     vertex(1120,300);
+     vertex(1130,320);
+    endShape(CLOSE);
+ 
+ 
+    //Character Icon above PingPong Pad to Show they are serving
+    beginShape(QUADS);
+  
+     fill(0, 255, 0);     
+     vertex(mouseX-10,mouseY-80);
+     vertex(mouseX-20,mouseY-100);
+     vertex(mouseX+10,mouseY-80);
+     vertex(mouseX+20,mouseY-100);
+     //vertex(20,10);
+     //vertex(30,30);
+     //vertex(120,10);
+     //vertex(135,30);     
+    endShape(CLOSE);
+    
+    //tennis pong
+    ellipse(mouseX + 150,mouseY,10,10);
+
+}
